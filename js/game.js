@@ -1,137 +1,103 @@
-//select button for gold
-var upgButton = document.querySelector('button.btn-up-gold');
-var downgButton = document.querySelector('button.btn-down-gold');
-var leftgButton = document.querySelector('button.btn-left-gold');
-var rightgButton = document.querySelector('button.btn-right-gold');
-//select buttons for white
-var upwButton = document.querySelector('button.btn-up-white');
-var downwButton = document.querySelector('button.btn-down-white');
-var leftwButton = document.querySelector('button.btn-left-white');
-var rightwButton = document.querySelector('button.btn-right-white');
-//if key pressed
-var keys = document.querySelector('html');
+// Bob's player position
 var bob = {
-    x: 0,
-    y: 0
+  x: 0,
+  y: 0
 };
 
+// Alice's player position
 var alice = {
-    x: 7,
-    y: 7
-};    
+  x: 7,
+  y: 7
+};
 
-function updatePlayerPosition() {
-    // Ensure they don't fall off the end of the Earth
-    bob.x = Math.min(Math.max(bob.x, 0), 7);
-    bob.y = Math.min(Math.max(bob.y, 0), 7);
-    alice.x = Math.min(Math.max(alice.x, 0), 7);
-    alice.y = Math.min(Math.max(alice.y, 0), 7);
+// Updates CSS styling for each player to the positions
+// defined in their character objects above.
+function updatePlayerPosition () {
+  // Ensure they don't fall off the end of the Earth
+  bob.x = Math.min(Math.max(bob.x, 0), 7);
+  bob.y = Math.min(Math.max(bob.y, 0), 7);
+  alice.x = Math.min(Math.max(alice.x, 0), 7);
+  alice.y = Math.min(Math.max(alice.y, 0), 7);
 
-    console.log(bob)
-    console.log(alice)
+  var b = document.getElementsByClassName('bob')[0];
+  b.style.gridRowStart = bob.y + 1;
+  b.style.gridColumnStart = bob.x + 1;
 
-    var b = document.getElementsByClassName('bob')[0];
-    b.style.gridRowStart = bob.y+1;
-    b.style.gridColumnStart = bob.x+1;
-
-    var a = document.getElementsByClassName('alice')[0];    
-    a.style.gridRowStart = alice.y+1;
-    a.style.gridColumnStart = alice.x+1;
+  var a = document.getElementsByClassName('alice')[0];
+  a.style.gridRowStart = alice.y + 1;
+  a.style.gridColumnStart = alice.x + 1;
 }
 
 updatePlayerPosition();
 
-//functions for moving gold
-function MoveUpg(){
-    bob.y--;
-    updatePlayerPosition();
-}
-function MoveDowng(){
-    bob.y++;
-    updatePlayerPosition();
-
-}
-function MoveLeftg(){
-    bob.x--;
-    updatePlayerPosition();
-}
-function MoveRightg(){
-    bob.x++;
-    updatePlayerPosition();
+// functions for moving gold
+function MoveUpg () {
+  bob.y--;
+  updatePlayerPosition();
 }
 
-//functions for moving white
-function MoveUpw(){
-    alice.y--;
-    updatePlayerPosition();
+function MoveDowng () {
+  bob.y++;
+  updatePlayerPosition();
 }
-function MoveDownw(){
-    alice.y++;
-    updatePlayerPosition();
+
+function MoveLeftg () {
+  bob.x--;
+  updatePlayerPosition();
 }
-function MoveLeftw(){
-    alice.x--;
-    updatePlayerPosition();
+
+function MoveRightg () {
+  bob.x++;
+  updatePlayerPosition();
 }
-function MoveRightw(){
-    alice.x++;
-    updatePlayerPosition();
+
+// jQuery select buttons for gold
+$('button.btn-up-gold').click(MoveUpg);
+$('button.btn-down-gold').click(MoveDowng);
+$('button.btn-left-gold').click(MoveLeftg);
+$('button.btn-right-gold').click(MoveRightg);
+
+// functions for moving white
+function MoveUpw () {
+  alice.y--;
+  updatePlayerPosition();
 }
-//if glod buttons are clicked
-upgButton.onclick = function() {
-    MoveUpg();
+function MoveDownw () {
+  alice.y++;
+  updatePlayerPosition();
 }
-downgButton.onclick = function() {
-    MoveDowng();
+function MoveLeftw () {
+  alice.x--;
+  updatePlayerPosition();
 }
-leftgButton.onclick = function() {
-    MoveLeftg();
+function MoveRightw () {
+  alice.x++;
+  updatePlayerPosition();
 }
-rightgButton.onclick = function() {
-    MoveRightg();
-}
-//if white buttons are clicked
-upwButton.onclick = function() {
-    MoveUpw();
-}
-downwButton.onclick = function() {
-    MoveDownw();
-}
-leftwButton.onclick = function() {
-    MoveLeftw();
-}
-rightwButton.onclick = function() {
-    MoveRightw();
-}
-//if key is pressed
-keys.onkeypress = function(){
-    var x = event.key;
-    switch(x) {
-        case 'w':
-            MoveUpg();
-          break;
-        case 'a':
-            MoveLeftg();
-          break;
-        case 's':
-            MoveDowng();
-          break;
-        case 'd':
-            MoveRightg();
-          break;
-        case 'i':
-          MoveUpw();
-            break;
-        case 'j':
-          MoveLeftw();
-            break;
-        case 'k':
-          MoveDownw();
-            break;
-        case 'l':
-          MoveRightw();
-            break;
-        default:
-      }
-      
+
+// select button for white
+$('button.btn-up-white').click(MoveUpw);
+$('button.btn-down-white').click(MoveDownw);
+$('button.btn-left-white').click(MoveLeftw);
+$('button.btn-right-white').click(MoveRightw);
+
+// Key mapping
+const keyMap = {
+  // Gold player
+  'w': MoveUpg,
+  'a': MoveLeftg,
+  's': MoveDowng,
+  'd': MoveRightg,
+
+  // White player
+  'i': MoveUpw,
+  'j': MoveLeftw,
+  'k': MoveDownw,
+  'l': MoveRightw
 };
+
+// Handle keyboard inputs
+$(document).keypress((e) => {
+  const key = e.key;
+  if (keyMap[key]) keyMap[key]();
+});

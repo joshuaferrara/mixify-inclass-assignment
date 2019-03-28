@@ -1,5 +1,5 @@
 body {
-	background: url(/img/bg.png) no-repeat center center / cover;
+	background: url(../img/bg.png) no-repeat center center / cover;
 	margin: 15px;
 	background-color: #0f1516;
 }
@@ -31,17 +31,17 @@ body {
 }
 
 .bg-tile {
-  background: url(/img/tile-5.png);
+  background: url('../img/tile-5.png');
   grid-column: 1 / 9;
   grid-row: 1 / 9;
 }
 
 .alice {
-  background: url(/img/cat.png) center center / cover;
+  background: url('../img/cat.png') center center / cover;
 }
 
 .bob {
-  background: url(/img/dog.png) center center / cover;
+  background: url('../img/dog.png') center center / cover;
 }
 
 /* Welcome + Message */
@@ -76,25 +76,25 @@ button {
 
 /* Sprites */
 .btn-right-gold {
-  background: url('/img/buttons.png') no-repeat -108px -240px;
+  background: url('../img/buttons.png') no-repeat -108px -240px;
   width: 66px;
   height: 70px;
 }
 
 .btn-left-gold {
-	background: url('/img/buttons.png') no-repeat -108px -319px;
+	background: url('../img/buttons.png') no-repeat -108px -319px;
 	width: 66px;
   height: 70px;
 }
 
 .btn-up-gold {
-	background: url('/img/buttons.png') no-repeat -108px -397px;
+	background: url('../img/buttons.png') no-repeat -108px -397px;
 	width: 66px;
   height: 70px;
 }
 
 .btn-down-gold {
-	background: url('/img/buttons.png') no-repeat -108px -475px;
+	background: url('../img/buttons.png') no-repeat -108px -475px;
 	width: 66px;
   height: 70px;
 }
@@ -113,25 +113,25 @@ button {
 }
 
 .btn-right-white {
-	background: url('/img/buttons.png') no-repeat -34px -240px;
+	background: url('../img/buttons.png') no-repeat -34px -240px;
 	width: 66px;
   height: 70px;
 }
 
 .btn-left-white {
-	background: url('/img/buttons.png') no-repeat -34px -319px;
+	background: url('../img/buttons.png') no-repeat -34px -319px;
 	width: 66px;
   height: 70px;
 }
 
 .btn-up-white {
-	background: url('/img/buttons.png') no-repeat -34px -397px;
+	background: url('../img/buttons.png') no-repeat -34px -397px;
 	width: 66px;
   height: 70px;
 }
 
 .btn-down-white {
-	background: url('/img/buttons.png') no-repeat -34px -397px;
+	background: url('../img/buttons.png') no-repeat -34px -397px;
 	width: 66px;
   height: 70px;
 }
