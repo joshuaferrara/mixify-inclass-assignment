@@ -21,8 +21,8 @@ body {
 
 .bg-grid, .player-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(512, 1fr);
+  grid-template-rows: repeat(512, 1fr);
   position: absolute;
   top: 0;
   left: 0;
@@ -32,8 +32,8 @@ body {
 
 .bg-tile {
   background: url('../img/tile-5.png');
-  grid-column: 1 / 9;
-  grid-row: 1 / 9;
+  grid-column: 1 / 512;
+  grid-row: 1 / 512;
 }
 
 .alice {

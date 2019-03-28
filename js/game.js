@@ -19,13 +19,28 @@ function updatePlayerPosition () {
   alice.x = Math.min(Math.max(alice.x, 0), 7);
   alice.y = Math.min(Math.max(alice.y, 0), 7);
 
-  var b = document.getElementsByClassName('bob')[0];
-  b.style.gridRowStart = bob.y + 1;
-  b.style.gridColumnStart = bob.x + 1;
+  const gridAnim = {
+    step: (now, fx) => {
+      fx.elem.style[fx.prop] = Math.floor(now);
+    },
+    queue: false
+  };
 
-  var a = document.getElementsByClassName('alice')[0];
-  a.style.gridRowStart = alice.y + 1;
-  a.style.gridColumnStart = alice.x + 1;
+  // Animation for Bob
+  $('.bob').animate({
+    'grid-row-start': (bob.y * 68) + 1,
+    'grid-row-end': (bob.y * 68) + 1 + 32,
+    'grid-column-start': (bob.x * 68) + 1,
+    'grid-column-end': (bob.x * 68) + 32
+  }, gridAnim);
+
+  // Animation for alice
+  $('.alice').animate({
+    'grid-row-start': (alice.y * 68) + 1,
+    'grid-row-end': (alice.y * 68) + 1 + 32,
+    'grid-column-start': (alice.x * 68) + 1,
+    'grid-column-end': (alice.x * 68) + 32
+  }, gridAnim);
 }
 
 updatePlayerPosition();
